@@ -1,0 +1,19 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    <name> -- <role> -- <twitter>
+    takehiko satou -- Producer --
+    kazuya sagou -- Producer --
+    Tomoaki Abe -- Producer --
+    Gaku Hirabayashi -- designer --
+
+# THANKS
+
+    Takumi Yoshida
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    Apache Server Configs, jQuery, Modernizr, Normalize.css

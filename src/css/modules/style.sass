@@ -1,0 +1,642 @@
+/* style.sass */
+
+@import 'variables'
+@import 'utilities'
+
+// Gotham Bold
+@font-face
+  font-family: 'Gotham'
+  src: url('./font/gotham-bold.eot')
+  src: url('./font/gotham-bold.eot?#iefix') format('embedded-opentype'), url('./font/gotham-bold.woff2') format('woff2'), url('./font/GothamBold.woff') format('woff'), url('./font/gotham-bold.ttf') format('truetype')
+
+/* ==================================================
+   primary
+   ================================================== */
+
+*, *:after, *:before
+  box-sizing: border-box
+
+html
+  height: 100%
+  line-height: 1.75
+  letter-spacing: .025rem
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+body
+  padding: 0
+  margin: 0
+  color: $text
+  font-size: 15px
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans Japanese", Hiragino Sans, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif
+
+h1, h2, h3, h4, h5, h6
+  margin-top: 0
+  font-weight: 400
+  text-rendering: optimizeLegibility
+
+p
+  margin: 0
+
+ol, ul
+  padding-left: 0
+  li
+    color: $text
+
+nav
+  ol, ul
+    list-style: none
+    padding: 0
+    margin: 0
+
+button
+  appearance: none
+  padding: 0
+  border: 0
+
+a
+  color: $theme
+  text-decoration: none
+  background-color: transparent
+  &[href]:focus
+    color: $theme
+
+.text-en
+  font-family: 'Gotham'
+
+
+
+/* ==================================================
+   partial
+   ================================================== */
+
+//div
+  header
+    position: fixed
+    right: 0
+    left: 0
+    top: 0
+    z-index: 10
+    &.headroom
+      will-change: transform
+      &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: $black-transparent
+        transition: transform .4s ease-in-out, opacity .3s linear
+        opacity: 0
+        transform: translateY(-100%)
+        z-index: 0
+      svg.logo
+        transition: fill .3s
+    &.headroom--not-top
+      &::before
+        opacity: 1
+        transform: translateY(0)
+      svg.logo
+        fill: $contrast
+    @media (max-width: 767px)
+      position: absolute !important
+      &::before
+        display: none !important
+      svg.logo
+        width: 100px
+        height: 31px
+    .container
+      position: relative
+      height: 74px
+      z-index: 1
+
+.hero
+  position: relative
+  margin: 40px
+  overflow: hidden
+  @media (max-width: 767px)
+    margin: 64px 20px 40px
+    overflow: visible
+
+.hero-logo
+  position: absolute
+  top: 0
+  right: 0
+  svg
+    width: 64px
+    height: 64px
+    fill: $theme
+  @media (max-width: 767px)
+    top: -52px
+    right: 50%
+    margin-right: -20px
+    svg
+      width: 40px
+      height: 40px
+
+.hero-egg
+  position: absolute
+  top: 50%
+  right: 20px
+  width: 28px
+  height: 172px
+  line-height: 32px
+  padding: 26px 0
+  font-size: 14px
+  text-align: center
+  background-image: url('../img/png/emoji_bear.png'), url('../img/png/emoji_bee.png')
+  background-repeat: no-repeat, no-repeat
+  background-size: 28px, 28px
+  background-position: top, bottom
+  span
+    display: block
+    position: absolute
+    top: 70px
+    right: -45px
+    width: 120px
+    white-space: nowrap
+    transform: rotate(90deg)
+    transform-origin: center
+  @media (max-width: 767px)
+    top: -42px
+    right: 0
+    width: 40px
+    height: 20px
+    line-height: 20px
+    padding: 0 20px
+    font-size: 10px
+    background-size: 20px, 20px
+    background-position: left, right
+    span
+      display: none
+
+.hero-bg
+  width: calc(75% - 10px)
+  height: 600px
+  border-radius: 24px
+  background-image: url('../img/jpg/hero_bg.jpg')
+  background-repeat: repeat
+  background-position: 0 0
+  background-size: cover
+  @media (max-width: 1199px)
+    height: 480px
+  @media (max-width: 991px)
+    height: 320px
+  @media (max-width: 767px)
+    width: 100%
+    height: 200px
+
+.hero-content
+  position: absolute
+  top: 0
+  bottom: 0
+  display: flex
+  align-items: center
+  left: calc(75% - 10px)
+  width: 100%
+  margin-left: -50%
+  text-align: center
+  justify-content: center
+  @media (max-width: 767px)
+    width: 100%
+    left: 0
+    margin-left: 0
+
+.hero-content-inner
+  h1
+    font-size: 40px
+    letter-spacing: .2rem
+    .line1, .line2
+      clear: both
+      float: left
+      span:first-child
+        color: $contrast
+    .line1
+      margin-left: -85px
+    .line2
+      margin-left: 132px
+      margin-bottom: 20px
+  @media (max-width: 991px)
+    h1
+      font-size: 32px
+      .line1
+        margin-left: -70px
+      .line2
+        margin-left: 105px
+  @media (max-width: 767px)
+    h1
+      padding-top: 110px
+      font-size: 22px
+      color: $contrast !important
+      .line1
+        display: block
+        float: none
+        margin-left: 0
+      .line2
+        float: none
+        margin-left: 0
+
+.hero-contact
+  clear: both
+
+.content
+  padding: 0 40px 40px
+  @media (max-width: 767px)
+    padding: 0 20px 30px
+
+.content-title
+  position: relative
+  padding-bottom: 20px
+  @media (max-width: 767px)
+    padding-bottom: 5px
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 4px
+    height: 80px
+    background-color: $theme
+    @media (max-width: 767px)
+      height: 100px
+
+.content-title-inner
+  display: flex
+  align-items: center
+  h3
+    margin: 0 50px 0 0
+    .text-en
+      line-height: 1
+      font-size: 24px
+    .u-textMuted
+      font-size: 15px
+  @media (max-width: 767px)
+    display: block
+    h3
+      margin: 0 0 15px 30px
+      .text-en
+        font-size: 20px
+
+.content-title-img
+  margin: 0 20px
+  svg
+    fill: $theme
+    width: 80px
+    height: 80px
+    vertical-align: middle
+    @media (max-width: 767px)
+      width: 44px
+      height: 44px
+
+.content-title-text
+  line-height: 24px
+  font-size: 15px
+  @media (max-width: 767px)
+    padding: 15px 0
+
+.content-grid
+  position: relative
+  .u-flexWrap
+    margin-left: -20px
+    margin-right: -20px
+
+.grid-half, .grid-q
+  position: relative
+  height: 380px
+  margin: 20px
+  padding: 30px
+  border-radius: 24px
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  @media (max-width: 767px)
+    width: 100% !important
+    height: auto !important
+    min-height: 240px !important
+    margin: 15px 20px
+    padding: 20px
+.grid-index
+  color: $contrast
+  font-family: 'Gotham'
+  font-size: 14px
+.grid-half
+  width: calc(50% - 40px)
+  background-color: red
+  @media (max-width: 1199px)
+    width: calc(66.666% - 40px)
+  @media (max-width: 991px)
+    width: 100%
+.grid-q
+  width: calc(25% - 40px)
+  background-color: blue
+  @media (max-width: 1199px)
+    width: calc(33.333% - 40px)
+  @media (max-width: 991px)
+    width: calc(50% - 40px)
+
+.grid-1
+  background-image: url('../img/jpg/card_bg1.jpg')
+  .grid-index
+    margin-bottom: 20px
+  p
+    line-height: 26px
+    margin-bottom: 20px
+    color: $contrast
+    font-weight: 600
+    @media (max-width: 767px)
+      font-size: 13px
+.grid-2
+  background-color: $theme
+  ol
+    list-style: none
+    margin-top: 50px
+    li
+      margin-bottom: 20px
+      color: $contrast
+      font-weight: 600
+      span
+        display: inline-block
+        margin-right: 8px
+        color: $tartiary
+        font-size: 24px
+        font-family: 'Gotham'
+.grid-3
+  background-image: url('../img/jpg/card_bg2.jpg')
+  h4
+    position: absolute
+    right: 40px
+    bottom: 10px
+    color: $contrast
+    font-size: 28px
+    font-weight: 600
+    line-height: 40px
+    text-align: right
+    @media (max-width: 767px)
+      font-size: 24px
+.grid-4
+  background-image: url('../img/jpg/card_bg3.jpg')
+  h4
+    padding-top: 30px
+    color: $contrast
+    font-size: 28px
+    font-weight: 600
+    line-height: 40px
+    text-align: left
+    @media (max-width: 767px)
+      font-size: 24px
+.grid-5
+  background-image: url('../img/jpg/card_bg4.jpg')
+  h4
+    padding-top: 30px
+    color: $contrast
+    font-size: 28px
+    font-weight: 600
+    line-height: 40px
+    text-align: left
+    @media (max-width: 767px)
+      font-size: 24px
+.grid-6
+  background-color: $secondary
+  .grid-index
+    margin-bottom: 20px
+  .box
+    width: 220px
+    height: 160px
+    padding-top: 20px
+    color: $secondary
+    font-weight: 600
+    text-align: center
+    background-color: $contrast
+    border-radius: 4px
+    @media (max-width: 767px)
+      margin-left: auto
+      margin-right: auto
+    svg
+      fill: $secondary
+      width: 64px
+      height: 64px
+    .en
+      font-family: 'Gotham'
+      font-size: 20px
+  .arrow
+    margin: 65px 10px 0
+    @media (max-width: 767px)
+      display: none
+    svg
+      fill: $contrast
+      width: 80px
+      height: 28.16px
+  ul
+    padding-left: 20px
+    li
+      @media (max-width: 767px)
+        font-size: 13px
+  > .u-flex
+    @media (max-width: 767px)
+      display: block !important
+.grid-7
+  background-color: $theme
+  .logo
+    text-align: center
+    padding-top: 50px
+    svg
+      fill: $contrast
+      width: 100px
+      height: 109.02px
+      margin-bottom: 20px
+    @media (max-width: 767px)
+      padding: 20px 0
+      svg
+        width: 70px
+        height: 76.32px
+      a
+        display: block
+        margin: 0 auto 5px
+        text-align: center
+
+.grid-8
+  background-image: url('../img/jpg/card_bg5.jpg')
+  .grid-index
+    margin-bottom: 60px
+    @media (max-width: 767px)
+      margin-bottom: 20px
+  .logo
+    text-align: center
+    svg
+      fill: $contrast
+      width: 238px
+      height: 68px
+      @media (max-width: 767px)
+        width: 160px
+        height: 40px
+        margin-top: 10px
+  @media (max-width: 767px)
+    > .u-flex
+      display: block !important
+      a
+        display: block
+        margin: 0 auto 15px
+        text-align: center
+
+// footer
+footer
+  background-color: $theme-thin1
+  @media (max-width: 767px)
+    font-size: 13px
+
+.footer-hero
+  position: relative
+  padding: 100px 0
+  text-align: center
+  @media (max-width: 767px)
+    padding: 50px 0
+  .typo
+    position: absolute
+    top: 90px
+    left: 0
+    right: 0
+    bottom: 0
+    color: $theme-thin2
+    font-family: 'Gotham'
+    font-size: 130px
+    text-align: center
+    z-index: 0
+    div
+      line-height: 130px
+      max-width: 100%
+      white-space: nowrap
+      letter-spacing: -9px
+      overflow: hidden
+    @media (max-width: 767px)
+      font-size: 50px
+      div
+        line-height: 50px
+        letter-spacing: -2px
+  .footer-hero-content
+    position: relative
+    z-index: 1
+    > .u-flex
+      display: block !important
+  .logo
+    svg
+      fill: $theme
+      width: 100px
+      height: 109.02px
+      @media (max-width: 767px)
+        width: 70px
+        height: 76.32px
+  .tagline
+    margin: 20px 0
+    color: $text
+    font-size: 22px
+    font-weight: 600
+    @media (max-width: 767px)
+      margin: 0
+      padding: 0 40px 20px
+      font-size: 16px
+
+.footer-inner
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 0 40px 40px
+  @media (max-width: 767px)
+    display: block
+    padding: 0 20px 30px
+
+.nav-footer
+  a
+    display: block
+    height: 32px
+    svg
+      fill: $theme
+    &:hover
+      text-decoration: underline
+      svg
+        fill: $theme-thick
+  @media (max-width: 991px)
+    li
+      margin-bottom: 20px
+.copyright
+  color: $theme-thick
+  font-size: 13px
+  @media (max-width: 991px)
+    text-align: center
+    padding: 20px 0 30px
+
+/* ==================================================
+   modal
+   ================================================== */
+
+//.mobile-nav
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  background-color: $theme
+  transform: translate3d(200%, 0, 0)
+  transition: transform .25s ease-in-out, background-color .25s linear
+  z-index: 11
+  &.in
+    transform: translate3d(0, 0, 0)
+  .mobile-nav-inner
+    height: 100%
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+
+/* ==================================================
+   pace [page loading]
+   ================================================== */
+
+.pace
+  pointer-events: none
+  user-select: none
+
+.pace-inactive
+  display: none
+
+.pace .pace-progress
+  position: fixed
+  top: 0
+  right: 100%
+  width: 100%
+  height: 2px
+  background: $theme
+  z-index: 2000
+
+/* ==================================================
+   svg
+   ================================================== */
+
+svg
+  &.logo
+    width: 102.31px
+    height: 20px
+  &.logo-contrast
+    width: 172px
+    height: 53px
+    fill: $contrast
+  &.icon
+    width: 24px
+    height: 24px
+    fill: $text
+    &.twitter
+      fill: $twitter
+    &.facebook
+      fill: $facebook
+  &.icon-lg
+    width: 64px
+    height: 64px
+  &.icon-md
+    width: 32px
+    height: 32px
+  &.theme
+    fill: $theme
+  &.contrast
+    fill: $contrast
+  &.muted
+    fill: $muted
